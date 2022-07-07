@@ -1,0 +1,11 @@
+com\vector\demo\viewModel\PeopleVo.class
+com\vector\demo\mapper\PeopleMapper.class
+com\vector\demo\bean\PeopleBean.class
+com\vector\demo\DemoApplication.class
+com\vector\demo\service\PeopleService.class
+com\vector\demo\controller\PeopleController.class
+com\vector\demo\response\SwaggerConfiguration.class
+com\vector\demo\response\Result.class
+com\vector\demo\response\ResultCode.class
+com\vector\demo\response\CustomizeResultCode.class
+com\vector\demo\service\imp\PeopleServiceImpl.class

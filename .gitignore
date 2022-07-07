@@ -1,0 +1,3 @@
+# Project exclude paths
+/01_lambda/target/
+/02_stream/target/
