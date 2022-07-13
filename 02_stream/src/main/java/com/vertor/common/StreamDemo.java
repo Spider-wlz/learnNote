@@ -1,12 +1,16 @@
 package com.vertor.common;
 
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.IntConsumer;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
  * @author wlz
  * @date 2022/7/4 10:05
+ * 为了OptionalDemo的练习 main方法注释掉
  */
 
 public class StreamDemo {
@@ -23,11 +27,53 @@ public class StreamDemo {
         //test08();
         //test09();
         //test10();
-        test11();
+        //test11();
+//        test12();
 
     }
 
+    /**
+     * parallel() 实现多线程并行流
+     * parallelStream可直接实现
+     *
+     * peek():Stream流提供的检验方法 作为中间件实现输出
+     * 此处是用来查看当前线程是哪个
+     */
+    private static void test12() {
+            Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+            Integer sum = stream.parallel()
+                    .peek(new Consumer<Integer>() {
+                        @Override
+                        public void accept(Integer num) {
+                            System.out.println(num+Thread.currentThread().getName());
+                        }
+                    })
+                    .filter(num -> num > 5)
+                    .reduce((result, ele) -> result + ele)
+                    .get();
+            System.out.println(sum);
+        }
+
     private static void test11() {
+
+        List<Author> authors1 = getAuthors();
+        Stream<Author> authorStream = authors1.stream();
+        authorStream.distinct()
+                .filter(author -> author.getAge() > 17 || author.getName().length() >1)
+                .forEach(System.out::println);
+        authorStream.filter(new Predicate<Author>() {
+            @Override
+            public boolean test(Author author) {
+                return author.getAge()>17;
+            }
+        }.and(new Predicate<Author>() {
+            @Override
+            public boolean test(Author author) {
+                return author.getName().length()>1;
+            }
+        })).forEach(System.out::println);
+
+
         //使用reduce求所有作者年龄的和
         List<Author> authors = getAuthors();
         Integer result = authors.stream()
@@ -42,10 +88,11 @@ public class StreamDemo {
                 .map(Author::getAge)
                 .reduce(Integer::max)
                 .ifPresent(System.out::println);
-
-
     }
 
+    /**
+     * .sorted() 对比排序 可以用min替换
+     */
     private static void test10() {
         //获取一个年龄最小的作家，并输出他的姓名。
         List<Author> authors = getAuthors();
@@ -63,6 +110,9 @@ public class StreamDemo {
 
     }
 
+    /**
+     * .collect()数据转集合  三种转换形式
+     */
     private static void test09() {
         //获取一个存放所有作者名字的List集合
         List<Author> authors = getAuthors();
@@ -84,6 +134,9 @@ public class StreamDemo {
                 .collect(Collectors.toMap(Author::getName, Author::getBooks));
     }
 
+    /**
+     * max min
+     */
     private static void test08() {
 //        分别获取这些作家的所出书籍的最高分和最低分并打印
         List<Author> authors = getAuthors();
@@ -104,17 +157,34 @@ public class StreamDemo {
         System.out.println(min);
     }
 
+    /**
+     * map使用
+     * map数据类型拆装箱三种：mapToInt mapToLong mapToDouble
+     * flatmap一样
+     */
     private static void test07() {
         List<Author> authors = getAuthors();
         authors.stream()
-                //直接在作家集合中获取作家名字
-//                .distinct()
-//                .forEach(author -> System.out.println(author.getName()));
+              /*  //直接在作家集合中获取作家名字
+                .distinct()
+                .forEach(author -> System.out.println(author.getName()));*/
 
-                //先获取名字集合再去重输出
+               /* //先获取名字集合再去重输出
                   .map(Author::getName)
                   .distinct()
-                  .forEach(System.out::println);
+                  .forEach(System.out::println);*/
+
+                //map数据类型拆装箱
+                .mapToInt(Author::getAge)
+                .distinct()
+                .peek(new IntConsumer() {
+                    @Override
+                    public void accept(int value) {
+
+                    }
+                })
+                .forEach(System.out::println);
+
     }
 
     private static void test06() {
