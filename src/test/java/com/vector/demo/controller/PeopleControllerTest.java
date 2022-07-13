@@ -1,6 +1,6 @@
 package com.vector.demo.controller;
 
-import com.baomidou.mybatisplus.core.conditions.interfaces.Compare;
+import com.baomidou.mybatisplus.extension.api.R;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,10 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -26,7 +23,6 @@ class PeopleControllerTest {
 
     @Test
     void lambdaTest() {
-
         Comparator<Integer> comparable = (x, y) -> Integer.compare(x,y);
         System.out.println(comparable.compare(10, 11));
     }
@@ -54,5 +50,10 @@ class PeopleControllerTest {
         stringList.add("30");
         Collections.sort(stringList);
         stringList.forEach(System.out::println);
+    }
+
+    @Test
+    void ggChe(){
+        List<String> result = new ArrayList<>();
     }
 }

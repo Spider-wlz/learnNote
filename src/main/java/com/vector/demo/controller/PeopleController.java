@@ -24,7 +24,6 @@ public class PeopleController {
     public PeopleService peopleService;
 
     @GetMapping("/getPeople")
-    @ApiOperation("ceshi")
     public Result findName(){
         try{
             List<PeopleVo> peopleList = peopleService.findName();
@@ -33,5 +32,10 @@ public class PeopleController {
             e.printStackTrace();
             return Result.error();
         }
+    }
+
+    @GetMapping("/nicai")
+    public String findNiCai(){
+     return "ok";
     }
 }
