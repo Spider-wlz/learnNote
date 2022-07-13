@@ -13,10 +13,16 @@ public class OptionalDemo {
         test02();
         //test01();
         //test00();
+        test03();
+    }
+
+    private static void test03() {
+        
     }
 
     /**
      * objectOptional.orElseThrow抛出异常
+     *
      */
     private static void test02() {
         Optional<Author> objectOptional = Optional.of(null);
