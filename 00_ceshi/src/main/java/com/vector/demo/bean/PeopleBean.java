@@ -11,12 +11,11 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 @Data
 public class PeopleBean {
 
-    @TableId(value = "id" ,type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private int id;
     private String name;
     private int age;
     private Double salary;
 
-    
 
 }

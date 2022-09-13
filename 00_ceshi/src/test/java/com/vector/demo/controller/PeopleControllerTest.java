@@ -1,6 +1,5 @@
 package com.vector.demo.controller;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +13,34 @@ import java.util.*;
 @RunWith(SpringRunner.class)
 class PeopleControllerTest {
 
+
+    /**
+     * new子类 隐式调用父类super(this)
+     */
+    @Test
+    void FuAndZi() {
+        Zi zi = new Zi();
+    }
+    class Fu {
+        int a = 10;
+
+        public void Fup() {
+            System.out.println("父类a = " + a);
+        }
+        Fu() {
+            Fup();
+        }
+    }
+    class Zi extends Fu{
+        int a = 20;
+        public void Fup() {
+            System.out.println("子类a = " + a);
+        }
+        Zi() {
+            Fup();
+        }
+    }
+
     @Test
     void localtime() {
         LocalTime localTime = LocalTime.now();
@@ -23,7 +50,7 @@ class PeopleControllerTest {
 
     @Test
     void lambdaTest() {
-        Comparator<Integer> comparable = (x, y) -> Integer.compare(x,y);
+        Comparator<Integer> comparable = (x, y) -> Integer.compare(x, y);
         System.out.println(comparable.compare(10, 11));
     }
 
@@ -53,7 +80,7 @@ class PeopleControllerTest {
     }
 
     @Test
-    void ggChe(){
+    void ggChe() {
         List<String> result = new ArrayList<>();
     }
 }

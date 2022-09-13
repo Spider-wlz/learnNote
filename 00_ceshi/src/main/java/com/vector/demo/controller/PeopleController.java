@@ -27,7 +27,7 @@ public class PeopleController {
     public Result findName(){
         try{
             List<PeopleVo> peopleList = peopleService.findName();
-            return Result.ok().data("people",peopleList);
+            return Result.ok().data("people",peopleList).code(111).message("nicai");
         }catch (Exception e){
             e.printStackTrace();
             return Result.error();

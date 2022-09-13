@@ -1,9 +1,6 @@
 package com.vector.demo.response;
 
-import com.vector.demo.bean.PeopleBean;
-
 /**
- * @Author: NieChangan
  * @Description: 返回码定义
  * 规定:
  * #200表示成功

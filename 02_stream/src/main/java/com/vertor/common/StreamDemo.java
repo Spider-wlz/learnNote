@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 public class StreamDemo {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         //test01();
         //test02();
@@ -31,7 +31,7 @@ public class StreamDemo {
 //        test12();
 
     }
-
+*/
     /**
      * parallel() 实现多线程并行流
      * parallelStream可直接实现
