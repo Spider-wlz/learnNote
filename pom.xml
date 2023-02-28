@@ -8,6 +8,8 @@
         <module>02_stream</module>
         <module>03_es_heima</module>
         <module>00_ceshi</module>
+        <module>04_reviewboot</module>
+        <module>05_timeTask</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

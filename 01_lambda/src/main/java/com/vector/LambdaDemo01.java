@@ -15,8 +15,10 @@ public class LambdaDemo01 {
 
     public static void main(String[] args) {
 
-      /*  //1
-        new Thread(() -> System.out.println("nicai2.0")).start();
+        //1
+        new Thread(() -> {
+            System.out.println("nicai2.0");
+        }).start();
 
         //2
         int i = calculateNum((a, b) -> a + b);
@@ -37,7 +39,7 @@ public class LambdaDemo01 {
         typeConver(Integer::valueOf);
 
         //5
-        foreachArr(System.out::println);*/
+        foreachArr(System.out::println);
     }
 
     public static void foreachArr(IntConsumer consumer){

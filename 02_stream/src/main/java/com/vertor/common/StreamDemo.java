@@ -15,11 +15,11 @@ import java.util.stream.Stream;
 
 public class StreamDemo {
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
 
         //test01();
         //test02();
-        //test03();
+//        test03();
         //test04();
         //test05();
         //test06();
@@ -31,7 +31,7 @@ public class StreamDemo {
 //        test12();
 
     }
-*/
+
     /**
      * parallel() 实现多线程并行流
      * parallelStream可直接实现
@@ -61,17 +61,10 @@ public class StreamDemo {
         authorStream.distinct()
                 .filter(author -> author.getAge() > 17 || author.getName().length() >1)
                 .forEach(System.out::println);
-        authorStream.filter(new Predicate<Author>() {
-            @Override
-            public boolean test(Author author) {
-                return author.getAge()>17;
-            }
-        }.and(new Predicate<Author>() {
-            @Override
-            public boolean test(Author author) {
-                return author.getName().length()>1;
-            }
-        })).forEach(System.out::println);
+
+        authorStream.filter(((Predicate<Author>) author -> author.getAge() > 17)
+                .and(author -> author.getName().length()>1))
+                .forEach(System.out::println);
 
 
         //使用reduce求所有作者年龄的和

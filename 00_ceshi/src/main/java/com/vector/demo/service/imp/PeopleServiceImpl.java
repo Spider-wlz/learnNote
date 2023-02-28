@@ -26,7 +26,7 @@ public class PeopleServiceImpl implements PeopleService {
         List<PeopleBean> p1 = peopleMapper.findPeople();
         List<PeopleVo> pvList = new ArrayList<>();
         for(PeopleBean p : p1){
-            PeopleVo pv = new PeopleVo();
+            PeopleVo pv = null;
             Double upSalary = p.getSalary();
             if(upSalary >= SALARY_SUM){
                 pv.setSalary(upSalary / 10000 + "万");

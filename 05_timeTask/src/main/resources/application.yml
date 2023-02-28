@@ -1,0 +1,9 @@
+server:
+  port: 8085
+
+threadpool:
+  corePoolSize: 8
+  maxPoolSize: 16
+  queueCapacity: 5
+  keepAliveSeconds: 300
+  threadNamePrefix: my-xiaoxiao2-AsyncExecutor-
